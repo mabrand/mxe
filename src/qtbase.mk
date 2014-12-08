@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := b04815058c18058b6ba837206756a2c87d1391f07a0dcb0dd314f970fd041
 $(PKG)_SUBDIR   := $(PKG)-everywhere-src-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-everywhere-opensource-src-$($(PKG)_VERSION).tar.xz
 $(PKG)_URL      := https://download.qt.io/archive/qt/5.15/$($(PKG)_VERSION)/submodules/$($(PKG)_FILE)
-$(PKG)_DEPS     := cc jpeg libpng mesa openssl pcre2 sqlite zlib zstd $(BUILD)~zstd \
+$(PKG)_DEPS     := cc instantclient-sdk-nt instantclient-sdk-windows.x64 jpeg libpng mesa openssl pcre2 sqlite zlib zstd $(BUILD)~zstd \
                    $(if $(findstring shared,$(MXE_TARGETS)), icu4c)
 $(PKG)_DEPS_$(BUILD) :=
 $(PKG)_TARGETS  := $(BUILD) $(MXE_TARGETS)
@@ -51,6 +51,7 @@ define $(PKG)_BUILD
             -no-sql-mysql \
             -plugin-sql-sqlite \
             -plugin-sql-odbc \
+            -plugin-sql-oci \
             -no-sql-psql \
             -no-sql-tds \
             -system-zlib \
