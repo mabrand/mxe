@@ -22,6 +22,6 @@ define $(PKG)_BUILD
         $(MXE_CONFIGURE_OPTS) \
         --disable-readline \
         --enable-threadsafe \
-        CFLAGS="-Os -DSQLITE_ENABLE_COLUMN_METADATA"
+        CFLAGS="-Os -DSQLITE_DQS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_ENABLE_SORTER_REFERENCES -DSQLITE_ENABLE_BYTECODE_VTAB"
     $(MAKE) -C '$(1)' -j 1 install
 endef
