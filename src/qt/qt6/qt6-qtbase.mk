@@ -11,7 +11,7 @@ $(PKG)_SUBDIR   := $(PKG_BASENAME)-everywhere-src-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG_BASENAME)-everywhere-src-$($(PKG)_VERSION).tar.xz
 $(PKG)_URL      := https://download.qt.io/archive/qt/6.10/$($(PKG)_VERSION)/submodules/$($(PKG)_FILE)
 $(PKG)_TARGETS  := $(BUILD) $(MXE_TARGETS)
-$(PKG)_DEPS     := cc freetype harfbuzz jpeg libpng mesa mariadb-connector-c openssl pcre2 sqlite zlib zstd $(BUILD)~$(PKG) \
+$(PKG)_DEPS     := cc freetype harfbuzz jpeg libpng mesa openssl pcre2 sqlite zlib zstd $(BUILD)~$(PKG) \
                    $(if $(findstring shared,$(MXE_TARGETS)), icu4c)
 $(PKG)_DEPS_$(BUILD) :=
 $(PKG)_OO_DEPS_$(BUILD) := ninja
@@ -53,7 +53,7 @@ define $(PKG)_BUILD
         -DOPENSSL_USE_STATIC_LIBS=TRUE \
         -DFEATURE_system_pcre2=ON \
         -DFEATURE_pkg_config=ON \
-        -DFEATURE_sql_mysql=ON \
+        -DFEATURE_sql_mysql=OFF \
         -DMySQL_INCLUDE_DIR='$(PREFIX)/$(TARGET)/include/mariadb' \
         -DMySQL_LIBRARY_DIR='$(PREFIX)/$(TARGET)/lib/mariadb' \
         -DMySQL_LIBRARY=$(if $(BUILD_STATIC),"`$(TARGET)-pkg-config --libs libmariadb`",'$(PREFIX)/$(TARGET)/lib/mariadb/libmariadb.a') \
