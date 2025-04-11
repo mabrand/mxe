@@ -11,7 +11,7 @@ $(PKG)_SUBDIR   := $(PKG_BASENAME)-everywhere-src-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG_BASENAME)-everywhere-src-$($(PKG)_VERSION).tar.xz
 $(PKG)_URL      := https://download.qt.io/archive/qt/6.12/$($(PKG)_VERSION)/submodules/$($(PKG)_FILE)
 $(PKG)_TARGETS  := $(BUILD) $(MXE_TARGETS)
-$(PKG)_DEPS     := cc dbus freetype harfbuzz jpeg libpng mesa mariadb-connector-c openssl pcre2 sqlite zlib zstd $(BUILD)~$(PKG) \
+$(PKG)_DEPS     := cc freetype harfbuzz jpeg libpng mesa openssl pcre2 sqlite zlib zstd $(BUILD)~$(PKG) \
                    $(if $(findstring shared,$(MXE_TARGETS)), icu4c)
 $(PKG)_DEPS_$(BUILD) :=
 $(PKG)_OO_DEPS_$(BUILD) := ninja
@@ -39,11 +39,11 @@ define $(PKG)_BUILD
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_{EXAMPLES,TESTS}=OFF \
         -DBUILD_WITH_PCH=OFF \
-        -DFEATURE_{accessibility,dbus,glib,icu,opengl_dynamic,openssl,openssl_linked,pkg_config}=ON \
-        -DFEATURE_{fontconfig,waylandscanner,use_gold_linker_alias}=OFF \
+        -DFEATURE_{accessibility,glib,icu,opengl_dynamic,openssl,openssl_linked,pkg_config}=ON \
+        -DFEATURE_{dbus,fontconfig,waylandscanner,use_gold_linker_alias}=OFF \
         -DFEATURE_icu=$(CMAKE_SHARED_BOOL) \
-        -DFEATURE_sql_{mysql,odbc,sqlite}=ON \
-        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_sql_{odbc,sqlite}=ON \
+        -DFEATURE_sql_{mysql,psql}=OFF \
         -DFEATURE_system_{freetype,harfbuzz,pcre2,sqlite,zlib}=ON \
         -DOPENSSL_USE_STATIC_LIBS=TRUE \
         -DMySQL_INCLUDE_DIR='$(PREFIX)/$(TARGET)/include/mariadb' \
