@@ -265,7 +265,7 @@
     "libtasn1": {"version": "4.21.0", "website": "https://www.gnu.org/software/libtasn1/", "description": "GnuTLS"},
     "libtool": {"version": "2.5.4", "website": "https://www.gnu.org/software/libtool/", "description": "GNU Libtool"},
     "libtorrent-rasterbar": {"version": "1.1.6", "website": "https://www.libtorrent.org/", "description": ""},
-    "libunistring": {"version": "1.4.1", "website": "https://www.gnu.org/software/libunistring/", "description": ""},
+    "libunistring": {"version": "1.4.2", "website": "https://www.gnu.org/software/libunistring/", "description": ""},
     "libusb": {"version": "1.2.6.0", "website": "https://libusb-win32.sourceforge.io/", "description": "LibUsb"},
     "libusb1": {"version": "1.0.27", "website": "https://libusb.info/", "description": "LibUsb-1.0"},
     "libuv": {"version": "1.44.2", "website": "https://libuv.org", "description": ""},
